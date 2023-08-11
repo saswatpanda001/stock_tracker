@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="w-full h-screen flex flex-col justify-center items-center">
+    <div class="mx-auto my-10">
+        <h1 class="text-center text-6xl font-medium text-black">Live Stock Tracker</h1>
+    </div>
+
+        <div class='w-50'>
+            <form action="/main/trade" method='post'> {% csrf_token %}
+
+            <label for="stock_list" class="block mb-2 text-xl font-medium text-gray-900 mb-5 dark:text-white">Pick Stocks from NIFTY 50</label>
+            <select name="stock_list" multiple id="stock_list" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            
+                {% for each in stocks %}
+                <option class="text-xl font-normal p-1 m-1 border-gray-500" name={{each}} value={{each}}> {{each}}</option>
+                {% endfor %}
+
+            
+            </select>
+            <input type="submit" value="SUBMIT"  class="p-2 justify-center items-center  my-5 rounded-lg bg-purple-700 text-white text-xl" />
+        </form>
+
+        </div>
+
+        
+        
+
+
+</div>
+
+<div>
+
+
+{% endblock %}

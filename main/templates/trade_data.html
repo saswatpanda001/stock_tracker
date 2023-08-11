@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="w-full h-screen flex flex-col justify-center items-center">
+    <div class="mx-auto my-10">
+        <h1 class="text-center text-6xl font-medium text-black">Live Stock Tracker</h1>
+    </div>
+
+    {% for each in data%}
+    <h1>{{each}}</h1>
+    {% endfor %}
+    
+        
+
+        
+        
+
+
+</div>
+
+<div>
+
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="w-full h-screen">
+    <div class="mx-auto my-10">
+        <h1 class="text-center text-6xl text-black font-medium">Stock Trader</h1>
+    </div>
+
+
+    <div class="mx-auto my-10 flex flex-col justify-center items-center">
+      
+        <table class="text-left">
+            <thead>
+              <tr>
+                <th class="font-bold px-5 py-1 text-2xl">Stocks</th>
+                <th class="font-bold px-5 py-1 text-2xl">Price</th>
+                <th class="font-bold px-5 py-1 text-2xl">Previous Close</th>
+                <th class="font-bold px-5 py-1 text-2xl">Change</th>
+               
+                <th class="font-bold px-5 py-1 text-2xl">PE_Ratio</th>
+                <th class="font-bold px-5 py-1 text-2xl">Market_Cap</th>
+                <th class="font-bold px-5 py-1 text-2xl">52 Week_Range</th>
+                <th class="font-bold px-5 py-1 text-2xl">Volume</th>
+                <th class="font-bold px-5 py-1 text-2xl">EPS</th>
+                
+                
+              </tr>
+            </thead>
+            <tbody>
+
+              {% for each in data %}
+             
+              <tr>
+                <td id="key" class="px-5 py-1 text-xl font-bold">{{each.stock_name}}</td>
+                <td id="{{each.stock_name}}_price" class="px-5 py-1 text-xl font-bold">{{each.price}}
+                <td id="{{each.stock_name}}_prev" class="px-5 py-1 text-xl">{{each.prev_close}}</td>
+
+                <td id="{{each.stock_name}}_change" class="px-5 py-1 text-xl">
+                  <Script>
+
+                    var a = document.getElementById("{{each.stock_name}}_price").innerHTML
+                    var b = document.getElementById("{{each.stock_name}}_prev").innerHTML
+
+                    a = parseInt(a,10)
+                    b = parseInt(b,10)
+                    var change = a-b
+                    change = parseInt(change,10)
+                    console.log(change)
+                    console.log(a)
+                    console.log(b)
+
+
+                    if(change<=0){
+                      document.getElementById("{{each.stock_name}}_change").style.color="red"
+                    }
+                    else{
+                      document.getElementById("{{each.stock_name}}_change").style.color="green"
+                    }
+                    document.getElementById("{{each.stock_name}}_change").innerHTML = change
+                  </Script> 
+                
+                
+                </td>
+               
+               
+                <td class="px-5 py-1 text-xl ">{{each.pe_ratio}}</td>
+                <td class="px-5 py-1 text-xl">{{each.market_cap}}</td>
+                <td class="px-5 py-1 text-xl">{{each.52_week_range}}</td>
+                <td class="px-5 py-1 text-xl">{{each.volume}}</td>\
+                <td class="px-5 py-1 text-xl">{{each.eps}}</td>
+              
+              </tr>
+
+              {% endfor %}
+              
+              
+            </tbody>
+          </table>
+    </div>
+
+    <div class="flex flex-row items-center justify-center">
+      <a href="/main/pick_stocks">
+        <button class="p-2 rounded-xl text-white bg-purple-800 text-xl">Pick Stocks</button>
+        
+        
+        <a href={% url 'main_app:trade_stocksdata' %}>
+        <button class="p-2 rounded-xl text-white bg-purple-800 text-xl">Pick Stocks</button>
+        </a>
+
+       
+      </a>
+
+    </div>
+    
+
+
+
+    
+</div>
+
+<div>
+
+
+{% endblock %}

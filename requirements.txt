@@ -1,0 +1,17 @@
+beautifulsoup4==4.12.2
+Django==4.2.2
+django-allauth==0.54.0
+django-crispy-forms==2.0
+numpy==1.25.0
+oauthlib==3.2.2
+pandas==2.0.3
+psycopg2-binary==2.9.6
+requests==2.31.0
+sqlparse==0.4.4
+yahoo-fin==0.8.9.1
+celery==5.3.1
+django-celery-results-2.5.1
+django-celery-beat-2.5.0
+redis-4.6.0
+channels-4.0.0
+uvicorn-0.23.2
